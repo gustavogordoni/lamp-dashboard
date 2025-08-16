@@ -19,14 +19,35 @@ Com ele, você pode:
 
 ## Como usar
 
-1. Certifique-se de que o repositório [`lamp-compose`](https://github.com/gustavogordoni/lamp-compose) está clonado e configurado.  
-2. Rode o dashboard:
+1. Clone este repositório
+   
+```
+git clone https://github.com/gustavogordoni/lamp-dashboard.git
+````
+
+2. Certifique-se de clonar o repositório [`lamp-compose`](https://github.com/gustavogordoni/lamp-compose).
+   
+```
+git clone https://github.com/gustavogordoni/lamp-compose.git
+````
+
+3. Copie a pasta dashboard do projeto para dentro de [`lamp-compose`](https://github.com/gustavogordoni/lamp-compose)
+```
+cp -r lamp-dashboard/dashboard/ lamp-compose/
+````
+
+4. Acesse o diretório lamp-dashboard
+```
+cd lamp-compose
+````
+
+5. Rode o dashboard:
 
 ```
 java -jar dashboard/lamp-dashboard.jar
 ```
 
-4. Use a interface para gerenciar os serviços:
+6. Use a interface para gerenciar os serviços:
 
 * **PHP + Apache**
 * **MySQL**
