@@ -66,3 +66,14 @@ Este dashboard foi criado para:
 * **Facilitar o gerenciamento** de containers Docker
 * Servir como **painel de controle rápido** em ambiente local
 * Evitar comandos manuais de `docker compose up -d`, `docker down`, etc.
+  
+---
+
+## Ideias futuras
+
+Além das funcionalidades já implementadas, há planos para expandir o dashboard com recursos como:
+
+* Gerenciamento de diretórios de **volumes** dos containers.
+* Configuração e controle das **portas** dos serviços.
+* Alteração de **credenciais**, incluindo senhas e nomes de usuários padrão.
+* Melhorias na interface para uma **experiência mais intuitiva**.
