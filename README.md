@@ -31,12 +31,12 @@ git clone https://github.com/gustavogordoni/lamp-dashboard.git
 git clone https://github.com/gustavogordoni/lamp-compose.git
 ````
 
-3. Copie a pasta dashboard do projeto para dentro de [`lamp-compose`](https://github.com/gustavogordoni/lamp-compose)
+3. Copie a pasta dashboard do projeto para dentro de `lamp-compose`
 ```
 cp -r lamp-dashboard/dashboard/ lamp-compose/
 ````
 
-4. Acesse o diretório lamp-dashboard
+4. Acesse o diretório `lamp-compose`
 ```
 cd lamp-compose
 ````
