@@ -1,5 +1,7 @@
 # LAMP Dashboard - Gerenciador de Containers
 
+<div align="center"><img src="painelContainers.png" width="500" /></div>
+
 Este projeto é um **dashboard em Java (Swing)** que permite gerenciar facilmente os containers do repositório [lamp-compose](https://github.com/gustavogordoni/lamp-compose).
 
 Com ele, você pode:
