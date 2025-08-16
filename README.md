@@ -23,7 +23,7 @@ Com ele, você pode:
 2. Rode o dashboard:
 
 ```
-java -jar lamp-dashboard.jar
+java -jar dashboard/lamp-dashboard.jar
 ```
 
 4. Use a interface para gerenciar os serviços:
