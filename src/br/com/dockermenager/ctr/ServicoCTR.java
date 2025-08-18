@@ -7,6 +7,7 @@ package br.com.dockermenager.ctr;
 import br.com.dockermenager.dao.ConfigManagerDAO;
 import br.com.dockermenager.dao.MySQLUtils;
 import br.com.dockermenager.dao.DockerDAO;
+import br.com.dockermenager.dao.EnvConfig;
 
 /**
  *
@@ -25,6 +26,14 @@ public class ServicoCTR {
     public void verificarAplicarRoot() {
         MySQLUtils.verificarAplicarRoot();
     }
+    
+    public String getEnv(String key, String defaultValue) {
+        return EnvConfig.get(key, defaultValue);
+    }
+    
+    public void init(String dockerComposePath) {
+        EnvConfig.init(dockerComposePath);
+    }    
 
     public boolean iniciar(String composeFile, String servico) {
         return DockerDAO.iniciarContainer(composeFile, servico);

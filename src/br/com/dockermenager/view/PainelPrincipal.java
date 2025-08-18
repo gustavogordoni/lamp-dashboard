@@ -5,6 +5,7 @@
 package br.com.dockermenager.view;
 
 import br.com.dockermenager.ctr.ServicoCTR;
+import br.com.dockermenager.dao.EnvConfig;
 import java.awt.Desktop;
 import java.io.File;
 import java.net.URI;
@@ -394,12 +395,11 @@ public class PainelPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void iniciarMySQLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciarMySQLActionPerformed
-        if (controller.iniciar(getDockerComposeFile(), "mysql")) {
-            JOptionPane.showMessageDialog(this, "MySQL iniciado!");
-
+        if (controller.iniciar(getDockerComposeFile(), "mysql")) {           
             try {
                 Thread.sleep(5000);
                 controller.verificarAplicarRoot();
+                JOptionPane.showMessageDialog(this, "MySQL iniciado!");
             } catch (InterruptedException ex) {
                 System.getLogger(PainelPrincipal.class.getName())
                         .log(System.Logger.Level.ERROR, "Erro ao aguardar inicialização do MySQL", ex);
@@ -441,12 +441,12 @@ public class PainelPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_pararPostgresActionPerformed
 
     private void iniciarPhpMyAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciarPhpMyAdminActionPerformed
-        if (controller.iniciar(getDockerComposeFile(), "phpmyadmin")) {
-            JOptionPane.showMessageDialog(this, "phpMyAdmin iniciado!");
+        if (controller.iniciar(getDockerComposeFile(), "phpmyadmin")) {           
             
             try {
                 Thread.sleep(5000);
                 controller.verificarAplicarRoot();
+                JOptionPane.showMessageDialog(this, "phpMyAdmin iniciado!");
             } catch (InterruptedException ex) {
                 System.getLogger(PainelPrincipal.class.getName())
                         .log(System.Logger.Level.ERROR, "Erro ao aguardar inicialização do MySQL", ex);
@@ -503,6 +503,8 @@ public class PainelPrincipal extends javax.swing.JFrame {
                 dockerComposeFilePath = dockerComposeFile.getAbsolutePath();
                 JOptionPane.showMessageDialog(this, "Arquivo válido selecionado: \n" + dockerComposeFilePath);
 
+                controller.init(dockerComposeFilePath);
+                
                 atualizarStatusContainers();
 
                 dockerComposeFilePath = dockerComposeFile.getAbsolutePath();
@@ -540,15 +542,18 @@ public class PainelPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_pararPHPActionPerformed
 
     private void btnLinkPHPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLinkPHPActionPerformed
-        openWebpage("http://localhost:80");
+        controller.init(dockerComposeFilePath);
+        openWebpage("http://localhost:" + controller.getEnv("PHP_PORT", "80"));
     }//GEN-LAST:event_btnLinkPHPActionPerformed
 
     private void btnLinkPgAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLinkPgAdminActionPerformed
-        openWebpage("http://localhost:8081");
+        controller.init(dockerComposeFilePath);
+        openWebpage("http://localhost:" + controller.getEnv("PGADMIN_PORT", "8081"));
     }//GEN-LAST:event_btnLinkPgAdminActionPerformed
 
     private void btnLinkPhpMyAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLinkPhpMyAdminActionPerformed
-        openWebpage("http://localhost:8080");
+        controller.init(dockerComposeFilePath);
+        openWebpage("http://localhost:" + controller.getEnv("PMA_PORT", "8080"));
     }//GEN-LAST:event_btnLinkPhpMyAdminActionPerformed
 
     private String getDockerComposeFile() {
@@ -567,25 +572,25 @@ public class PainelPrincipal extends javax.swing.JFrame {
     }
 
     private void atualizarStatusContainers() {
-        boolean phpRodando = controller.isRunning("birazn-ifsp-php");
+        boolean phpRodando = controller.isRunning(controller.getEnv("PHP_CONTAINER_NAME", "birazn-ifsp-php"));
         iniciarPHP.setEnabled(!phpRodando);
         pararPHP.setEnabled(phpRodando);
         btnLinkPHP.setEnabled(phpRodando);
 
-        boolean mysqlRodando = controller.isRunning("birazn-ifsp-mysql");
+        boolean mysqlRodando = controller.isRunning(controller.getEnv("MYSQL_CONTAINER_NAME", "birazn-ifsp-mysql"));
         iniciarMySQL.setEnabled(!mysqlRodando);
         pararMySQL.setEnabled(mysqlRodando);
 
-        boolean postgresRodando = controller.isRunning("birazn-ifsp-pgsql");
+        boolean postgresRodando = controller.isRunning(controller.getEnv("POSTGRES_CONTAINER_NAME", "birazn-ifsp-pgsql"));
         iniciarPostgres.setEnabled(!postgresRodando);
         pararPostgres.setEnabled(postgresRodando);
 
-        boolean phpmyadminRodando = controller.isRunning("birazn-ifsp-phpmyadmin");
+        boolean phpmyadminRodando = controller.isRunning(controller.getEnv("PMA_CONTAINER_NAME", "birazn-ifsp-phpmyadmin"));
         iniciarPhpMyAdmin.setEnabled(!phpmyadminRodando);
         pararPhpMyAdmin.setEnabled(phpmyadminRodando);
         btnLinkPhpMyAdmin.setEnabled(phpmyadminRodando);
 
-        boolean pgadminRodando = controller.isRunning("birazn-ifsp-pgadmin");
+        boolean pgadminRodando = controller.isRunning(controller.getEnv("PGADMIN_CONTAINER_NAME", "birazn-ifsp-pgadmin"));
         iniciarPgAdmin.setEnabled(!pgadminRodando);
         pararPgAdmin.setEnabled(pgadminRodando);
         btnLinkPgAdmin.setEnabled(pgadminRodando);

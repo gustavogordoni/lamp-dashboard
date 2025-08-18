@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package br.com.dockermenager.dao;
+
 import java.sql.*;
 
 /**
@@ -11,9 +12,12 @@ import java.sql.*;
  */
 public class MySQLUtils {
 
-    private static final String URL = "jdbc:mysql://localhost:3306/mysql";
-    private static final String USER = "root";
-    private static final String PASS = "root";
+    private static final String URL = "jdbc:mysql://localhost:"
+            + EnvConfig.get("MYSQL_PORT", "3306") + "/"
+            + EnvConfig.get("MYSQL_DATABASE", "mysql");
+
+    private static final String USER = EnvConfig.get("MYSQL_USER", "root");
+    private static final String PASS = EnvConfig.get("MYSQL_PASSWORD", "root");
 
     public static void verificarAplicarRoot() {
         try (Connection conn = DriverManager.getConnection(URL, USER, PASS); Statement stmt = conn.createStatement()) {

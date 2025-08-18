@@ -52,7 +52,8 @@ public class DockerDAO {
         return resultado.contains("Stopping") || resultado.contains("Stopped");
     }
 
-    public static boolean statusContainer(String containerName) {
+    public static boolean statusContainer(String serviceEnvKey) {
+        String containerName = EnvConfig.get(serviceEnvKey, serviceEnvKey);
         try {
             String resultado = executarComando(
                     "docker ps --filter \"name=^/" + containerName + "$\" --format \"{{.Status}}\""
@@ -62,4 +63,5 @@ public class DockerDAO {
             return false;
         }
     }
+
 }

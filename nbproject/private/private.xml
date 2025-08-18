@@ -4,8 +4,10 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/home/gustavo/dev/lamp-dashboard/src/br/com/dockermenager/view/PainelPrincipal.java</file>
-            <file>file:/home/gustavo/dev/lamp-dashboard/src/br/com/dockermenager/dao/DockerDAO.java</file>
             <file>file:/home/gustavo/dev/lamp-dashboard/src/br/com/dockermenager/ctr/ServicoCTR.java</file>
+            <file>file:/home/gustavo/dev/lamp-dashboard/src/br/com/dockermenager/dao/DockerDAO.java</file>
+            <file>file:/home/gustavo/dev/lamp-dashboard/src/br/com/dockermenager/dao/ConfigManagerDAO.java</file>
+            <file>file:/home/gustavo/dev/lamp-dashboard/src/br/com/dockermenager/dao/EnvConfig.java</file>
             <file>file:/home/gustavo/dev/lamp-dashboard/src/br/com/dockermenager/dao/MySQLUtils.java</file>
         </group>
     </open-files>
