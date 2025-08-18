@@ -5,7 +5,6 @@
 package br.com.dockermenager.view;
 
 import br.com.dockermenager.ctr.ServicoCTR;
-import br.com.dockermenager.dao.MySQLUtils;
 import java.awt.Desktop;
 import java.io.File;
 import java.net.URI;
@@ -400,7 +399,7 @@ public class PainelPrincipal extends javax.swing.JFrame {
 
             try {
                 Thread.sleep(5000);
-                MySQLUtils.verificarAplicarRoot();
+                controller.verificarAplicarRoot();
             } catch (InterruptedException ex) {
                 System.getLogger(PainelPrincipal.class.getName())
                         .log(System.Logger.Level.ERROR, "Erro ao aguardar inicialização do MySQL", ex);
@@ -447,7 +446,7 @@ public class PainelPrincipal extends javax.swing.JFrame {
             
             try {
                 Thread.sleep(5000);
-                MySQLUtils.verificarAplicarRoot();
+                controller.verificarAplicarRoot();
             } catch (InterruptedException ex) {
                 System.getLogger(PainelPrincipal.class.getName())
                         .log(System.Logger.Level.ERROR, "Erro ao aguardar inicialização do MySQL", ex);

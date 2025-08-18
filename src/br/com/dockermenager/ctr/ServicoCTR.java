@@ -5,6 +5,7 @@
 package br.com.dockermenager.ctr;
 
 import br.com.dockermenager.dao.ConfigManagerDAO;
+import br.com.dockermenager.dao.MySQLUtils;
 import br.com.dockermenager.dao.DockerDAO;
 
 /**
@@ -12,19 +13,17 @@ import br.com.dockermenager.dao.DockerDAO;
  * @author gustavo
  */
 public class ServicoCTR {
-
-    private ConfigManagerDAO configDAO;
-
-    public ServicoCTR() {
-        this.configDAO = new ConfigManagerDAO();
-    }
     
     public void salvarCaminho(String path) {
-        configDAO.salvarCaminho(path);
+        ConfigManagerDAO.salvarCaminho(path);
     }
     
     public String carregarCaminho() {
-        return configDAO.carregarCaminho();
+        return ConfigManagerDAO.carregarCaminho();
+    }
+    
+    public void verificarAplicarRoot() {
+        MySQLUtils.verificarAplicarRoot();
     }
 
     public boolean iniciar(String composeFile, String servico) {
