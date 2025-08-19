@@ -8,11 +8,18 @@ Com ele, você pode:
 - Acompanhar o status dos serviços
 
 ---
-## Screenshots
 
-<div align="center"><img src="painelContainers.png" width="500" /></div>
-<br><br>
-<div align="center"><img src="configPortas.png" width="500" /></div>
+## Principais telas
+
+<details>
+<summary>Screenshots</summary>
+<br />
+    <h3 align="center">Painel de Containers</h3>
+    <div align="center"><img src="painelContainers.png" width="50%" /></div>
+    <br />
+    <h3 align="center">Config: Portas</h3>
+    <div align="center"><img src="configPortas.png" width="50%" /></div> 
+</details>
 
 ---
 
