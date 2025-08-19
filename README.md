@@ -38,23 +38,29 @@ git clone https://github.com/gustavogordoni/lamp-dashboard.git
 git clone https://github.com/gustavogordoni/lamp-compose.git
 ````
 
-3. Copie a pasta dashboard do projeto para dentro de `lamp-compose`
+3. Crie o arquivo de variáveis de ambiente a partir do modelo:
+
+```
+cp .env.example .env
+```
+
+4. Copie a pasta dashboard do projeto para dentro de `lamp-compose`
 ```
 cp -r lamp-dashboard/dashboard/ lamp-compose/
 ````
 
-4. Acesse o diretório `lamp-compose`
+5. Acesse o diretório `lamp-compose`
 ```
 cd lamp-compose
 ````
 
-5. Rode o dashboard:
+6. Rode o dashboard:
 
 ```
 java -jar dashboard/lamp-dashboard.jar
 ```
 
-6. Use a interface para gerenciar os serviços:
+7. Use a interface para gerenciar os serviços:
 
 * **PHP + Apache**
 * **MySQL**
