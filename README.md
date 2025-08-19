@@ -41,7 +41,7 @@ git clone https://github.com/gustavogordoni/lamp-compose.git
 3. Crie o arquivo de variáveis de ambiente a partir do modelo:
 
 ```
-cp .env.example .env
+cp lamp-compose/.env.example lamp-compose/.env
 ```
 
 4. Copie a pasta dashboard do projeto para dentro de `lamp-compose`
