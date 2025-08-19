@@ -8,32 +8,42 @@ import br.com.dockermenager.dao.ConfigManagerDAO;
 import br.com.dockermenager.dao.MySQLUtils;
 import br.com.dockermenager.dao.DockerDAO;
 import br.com.dockermenager.dao.EnvConfig;
+import java.io.IOException;
+import java.util.Map;
 
 /**
  *
  * @author gustavo
  */
 public class ServicoCTR {
-    
+
     public void salvarCaminho(String path) {
         ConfigManagerDAO.salvarCaminho(path);
     }
-    
+
     public String carregarCaminho() {
         return ConfigManagerDAO.carregarCaminho();
     }
-    
+
     public void verificarAplicarRoot() {
         MySQLUtils.verificarAplicarRoot();
     }
-    
+
     public String getEnv(String key, String defaultValue) {
         return EnvConfig.get(key, defaultValue);
     }
-    
+
     public void init(String dockerComposePath) {
         EnvConfig.init(dockerComposePath);
-    }    
+    }
+
+    public void redefinirPadrao() throws IOException {
+        EnvConfig.redefinirPadrao();
+    }
+
+    public void salvar(Map<String, String> variaveis) throws IOException {
+        EnvConfig.salvar(variaveis);
+    }
 
     public boolean iniciar(String composeFile, String servico) {
         return DockerDAO.iniciarContainer(composeFile, servico);

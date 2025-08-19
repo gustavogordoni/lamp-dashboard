@@ -1,13 +1,18 @@
 # LAMP Dashboard - Gerenciador de Containers
 
-<div align="center"><img src="painelContainers.png" width="500" /></div>
-
 Este projeto é um **dashboard em Java (Swing)** que permite gerenciar facilmente os containers do repositório [lamp-compose](https://github.com/gustavogordoni/lamp-compose).
 
 Com ele, você pode:
 
 - Iniciar/Parar containers Docker
 - Acompanhar o status dos serviços
+
+---
+## Screenshots
+
+<div align="center"><img src="painelContainers.png" width="500" /></div>
+<br><br>
+<div align="center"><img src="configPortas.png" width="500" /></div>
 
 ---
 
@@ -74,6 +79,6 @@ Este dashboard foi criado para:
 Além das funcionalidades já implementadas, há planos para expandir o dashboard com recursos como:
 
 * Gerenciamento de diretórios de **volumes** dos containers.
-* Configuração e controle das **portas** dos serviços.
+* ~~Configuração e controle das **portas** dos serviços.~~
 * Alteração de **credenciais**, incluindo senhas e nomes de usuários padrão.
 * Melhorias na interface para uma **experiência mais intuitiva**.

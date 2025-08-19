@@ -5,19 +5,26 @@
 package br.com.dockermenager.dao;
 
 import io.github.cdimascio.dotenv.Dotenv;
-import java.io.File;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;   // ✅ IMPORT CORRETO
+import java.util.Map;
 
 /**
  *
  * @author gustavo
  */
 public class EnvConfig {
-    
+
     private static Dotenv dotenv;
+    private static File envFile;
 
     public static void init(String dockerComposePath) {
         File dockerFile = new File(dockerComposePath);
-        File envFile = new File(dockerFile.getParentFile(), ".env");
+        envFile = new File(dockerFile.getParentFile(), ".env");
 
         if (envFile.exists()) {
             dotenv = Dotenv.configure()
@@ -38,6 +45,44 @@ public class EnvConfig {
             return defaultValue;
         }
         return dotenv.get(key, defaultValue);
+    }
+
+    public static void salvar(Map<String, String> variaveis) throws IOException {
+        if (envFile == null) {
+            throw new IllegalStateException("EnvConfig não inicializado!");
+        }
+
+        List<String> linhas = Files.readAllLines(envFile.toPath(), StandardCharsets.UTF_8);
+        List<String> novasLinhas = new ArrayList<>();
+
+        for (String linha : linhas) {
+            String novaLinha = linha;
+            if (!linha.trim().startsWith("#") && linha.contains("=")) {
+                String chave = linha.split("=", 2)[0].trim();
+                if (variaveis.containsKey(chave)) {
+                    novaLinha = chave + "=" + variaveis.get(chave);
+                }
+            }
+            novasLinhas.add(novaLinha);
+        }       
+        
+        Files.write(envFile.toPath(), novasLinhas, StandardCharsets.UTF_8);        
+        
+        dotenv = Dotenv.configure()
+            .directory(envFile.getParent())
+            .ignoreIfMissing()
+            .load();
+    }
+
+    public static void redefinirPadrao() throws IOException {
+        Map<String, String> defaults = new LinkedHashMap<>();
+        defaults.put("PHP_PORT", "80");
+        defaults.put("POSTGRES_PORT", "5432");
+        defaults.put("PGADMIN_PORT", "8081");
+        defaults.put("MYSQL_PORT", "3306");
+        defaults.put("PMA_PORT", "8001");
+
+        salvar(defaults);
     }
 
 }

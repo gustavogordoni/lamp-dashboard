@@ -5,7 +5,6 @@
 package br.com.dockermenager.view;
 
 import br.com.dockermenager.ctr.ServicoCTR;
-import br.com.dockermenager.dao.EnvConfig;
 import java.awt.Desktop;
 import java.io.File;
 import java.net.URI;
@@ -63,11 +62,11 @@ public class PainelPrincipal extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         iniciarPHP = new javax.swing.JButton();
         pararPHP = new javax.swing.JButton();
-        labelMysql3 = new javax.swing.JLabel();
+        labelPHP = new javax.swing.JLabel();
         btnLinkPHP = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         btnDockerFile = new javax.swing.JButton();
+        btnConfig = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -139,18 +138,18 @@ public class PainelPrincipal extends javax.swing.JFrame {
                     .addComponent(iniciarMySQL)
                     .addComponent(iniciarPhpMyAdmin))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(pararPhpMyAdmin)
                         .addGap(18, 18, 18)
-                        .addComponent(labelPhpMyAdmin))
+                        .addComponent(labelPhpMyAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(pararMySQL)
                         .addGap(18, 18, 18)
                         .addComponent(labelMysql, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnLinkPhpMyAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(10, 10, 10))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -239,17 +238,16 @@ public class PainelPrincipal extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(pararPostgres)
                         .addGap(18, 18, 18)
-                        .addComponent(labelPostgres, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(labelPostgres, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(iniciarPgAdmin)
                         .addGap(18, 18, 18)
                         .addComponent(pararPgAdmin)
                         .addGap(18, 18, 18)
-                        .addComponent(labelPgAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnLinkPgAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                        .addComponent(labelPgAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnLinkPgAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -291,8 +289,8 @@ public class PainelPrincipal extends javax.swing.JFrame {
             }
         });
 
-        labelMysql3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelMysql3.setText("PHP");
+        labelPHP.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelPHP.setText("PHP");
 
         btnLinkPHP.setBackground(new java.awt.Color(102, 102, 255));
         btnLinkPHP.setForeground(new java.awt.Color(0, 0, 0));
@@ -314,10 +312,10 @@ public class PainelPrincipal extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(pararPHP)
                 .addGap(18, 18, 18)
-                .addComponent(labelMysql3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(labelPHP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnLinkPHP, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(10, 10, 10))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -326,18 +324,24 @@ public class PainelPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(iniciarPHP)
                     .addComponent(pararPHP)
-                    .addComponent(labelMysql3)
+                    .addComponent(labelPHP)
                     .addComponent(btnLinkPHP))
                 .addContainerGap())
         );
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("docker-compose.yaml");
+        jPanel6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
-        btnDockerFile.setText("Local do arquivo");
+        btnDockerFile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/dockermenager/view/folder.png"))); // NOI18N
         btnDockerFile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDockerFileActionPerformed(evt);
+            }
+        });
+
+        btnConfig.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/dockermenager/view/config.png"))); // NOI18N
+        btnConfig.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConfigActionPerformed(evt);
             }
         });
 
@@ -346,20 +350,20 @@ public class PainelPrincipal extends javax.swing.JFrame {
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap(25, Short.MAX_VALUE)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnDockerFile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnConfig)
+                    .addComponent(btnDockerFile))
+                .addGap(20, 20, 20))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap(30, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(10, 10, 10)
+                .addComponent(btnConfig)
+                .addGap(10, 10, 10)
                 .addComponent(btnDockerFile)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -367,35 +371,35 @@ public class PainelPrincipal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10))
+                .addContainerGap(14, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addContainerGap(15, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(6, 6, 6)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void iniciarMySQLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciarMySQLActionPerformed
-        if (controller.iniciar(getDockerComposeFile(), "mysql")) {           
+        if (controller.iniciar(getDockerComposeFile(), "mysql")) {
             try {
                 Thread.sleep(5000);
                 controller.verificarAplicarRoot();
@@ -441,8 +445,8 @@ public class PainelPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_pararPostgresActionPerformed
 
     private void iniciarPhpMyAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciarPhpMyAdminActionPerformed
-        if (controller.iniciar(getDockerComposeFile(), "phpmyadmin")) {           
-            
+        if (controller.iniciar(getDockerComposeFile(), "phpmyadmin")) {
+
             try {
                 Thread.sleep(5000);
                 controller.verificarAplicarRoot();
@@ -504,7 +508,7 @@ public class PainelPrincipal extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Arquivo válido selecionado: \n" + dockerComposeFilePath);
 
                 controller.init(dockerComposeFilePath);
-                
+
                 atualizarStatusContainers();
 
                 dockerComposeFilePath = dockerComposeFile.getAbsolutePath();
@@ -555,6 +559,32 @@ public class PainelPrincipal extends javax.swing.JFrame {
         controller.init(dockerComposeFilePath);
         openWebpage("http://localhost:" + controller.getEnv("PMA_PORT", "8080"));
     }//GEN-LAST:event_btnLinkPhpMyAdminActionPerformed
+
+    private void btnConfigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfigActionPerformed
+        JPopupMenu menu = new JPopupMenu();
+        
+        JMenuItem portasItem = new JMenuItem("Gerenciar Portas");
+        portasItem.addActionListener(e -> {
+            new PortasConfigView(dockerComposeFilePath).setVisible(true);
+        });
+        menu.add(portasItem);
+        
+        JMenuItem volumesItem = new JMenuItem("Gerenciar Volumes");
+        volumesItem.addActionListener(e -> {
+//            new VolumesConfigView().setVisible(true);
+        });
+        menu.add(volumesItem);
+
+        // Opção "Containers"
+        JMenuItem containersItem = new JMenuItem("Gerenciar Containers");
+        containersItem.addActionListener(e -> {
+//            new ContainersConfigView().setVisible(true);
+        });
+        menu.add(containersItem);
+
+        // Exibe o menu logo abaixo do botão
+        menu.show(btnConfig, 0, btnConfig.getHeight());
+    }//GEN-LAST:event_btnConfigActionPerformed
 
     private String getDockerComposeFile() {
         if (dockerComposeFilePath == null || dockerComposeFilePath.isBlank()) {
@@ -628,6 +658,7 @@ public class PainelPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnConfig;
     private javax.swing.JButton btnDockerFile;
     private javax.swing.JButton btnLinkPHP;
     private javax.swing.JButton btnLinkPgAdmin;
@@ -637,13 +668,12 @@ public class PainelPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton iniciarPgAdmin;
     private javax.swing.JButton iniciarPhpMyAdmin;
     private javax.swing.JButton iniciarPostgres;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JLabel labelMysql;
-    private javax.swing.JLabel labelMysql3;
+    private javax.swing.JLabel labelPHP;
     private javax.swing.JLabel labelPgAdmin;
     private javax.swing.JLabel labelPhpMyAdmin;
     private javax.swing.JLabel labelPostgres;
