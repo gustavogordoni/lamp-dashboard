@@ -91,7 +91,7 @@ Este dashboard foi criado para:
 
 Além das funcionalidades já implementadas, há planos para expandir o dashboard com recursos como:
 
-* Gerenciamento de diretórios de **volumes** dos containers.
-* ~~Configuração e controle das **portas** dos serviços.~~
-* Alteração de **credenciais**, incluindo senhas e nomes de usuários padrão.
-* Melhorias na interface para uma **experiência mais intuitiva**.
+- [ ] Gerenciamento de diretórios de **volumes** dos containers. [x]
+- [x] ~~Configuração e controle das **portas** dos serviços.~~
+- [ ] Alteração de **credenciais**, incluindo senhas e nomes de usuários padrão.
+- [ ] Melhorias na interface para uma **experiência mais intuitiva**.
