@@ -14,7 +14,7 @@ import javax.swing.*;
  *
  * @author gustavo
  */
-public class PainelPrincipal extends javax.swing.JFrame {
+public final class PainelPrincipal extends javax.swing.JFrame {    
 
     private ServicoCTR controller = new ServicoCTR();
     private String dockerComposeFilePath;
@@ -339,6 +339,7 @@ public class PainelPrincipal extends javax.swing.JFrame {
         });
 
         btnConfig.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/dockermenager/view/config.png"))); // NOI18N
+        btnConfig.setEnabled(false);
         btnConfig.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConfigActionPerformed(evt);
@@ -371,14 +372,14 @@ public class PainelPrincipal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(14, Short.MAX_VALUE)
+                .addContainerGap(15, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -562,16 +563,16 @@ public class PainelPrincipal extends javax.swing.JFrame {
 
     private void btnConfigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfigActionPerformed
         JPopupMenu menu = new JPopupMenu();
-        
+
         JMenuItem portasItem = new JMenuItem("Gerenciar Portas");
         portasItem.addActionListener(e -> {
             new PortasConfigView(dockerComposeFilePath).setVisible(true);
         });
         menu.add(portasItem);
-        
+
         JMenuItem volumesItem = new JMenuItem("Gerenciar Volumes");
         volumesItem.addActionListener(e -> {
-//            new VolumesConfigView().setVisible(true);
+            new VolumesConfigView(dockerComposeFilePath).setVisible(true);
         });
         menu.add(volumesItem);
 
@@ -601,7 +602,7 @@ public class PainelPrincipal extends javax.swing.JFrame {
         }
     }
 
-    private void atualizarStatusContainers() {
+    public void atualizarStatusContainers() {
         boolean phpRodando = controller.isRunning(controller.getEnv("PHP_CONTAINER_NAME", "birazn-ifsp-php"));
         iniciarPHP.setEnabled(!phpRodando);
         pararPHP.setEnabled(phpRodando);
@@ -624,13 +625,17 @@ public class PainelPrincipal extends javax.swing.JFrame {
         iniciarPgAdmin.setEnabled(!pgadminRodando);
         pararPgAdmin.setEnabled(pgadminRodando);
         btnLinkPgAdmin.setEnabled(pgadminRodando);
+        
+        if (dockerComposeFilePath != null) {            
+            btnConfig.setEnabled(true);
+        }               
     }
 
     private boolean isDockerComposeFile(File file) {
         String nome = file.getName().toLowerCase();
         return nome.endsWith(".yml") || nome.endsWith(".yaml");
     }
-
+    
     /**
      * @param args the command line arguments
      */

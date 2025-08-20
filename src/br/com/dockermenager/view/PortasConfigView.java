@@ -26,15 +26,15 @@ public class PortasConfigView extends javax.swing.JFrame {
      * @param dockerComposeFilePath
      */
     public PortasConfigView(String dockerComposeFilePath) {
-        
+
         this.dockerComposeFilePath = dockerComposeFilePath;
         initComponents();
 
-        setTitle("Configuração de Portas");        
+        setTitle("Configuração de Portas");
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
-        controller.init(this.dockerComposeFilePath);        
+        controller.init(this.dockerComposeFilePath);
 
         preencherInputPortas();
     }
@@ -236,7 +236,7 @@ public class PortasConfigView extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(14, Short.MAX_VALUE)
+                .addContainerGap(15, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -245,12 +245,12 @@ public class PortasConfigView extends javax.swing.JFrame {
                     .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnRedefinir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnSalvar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(14, Short.MAX_VALUE)
+                .addContainerGap(15, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -264,7 +264,7 @@ public class PortasConfigView extends javax.swing.JFrame {
                 .addComponent(btnRedefinir, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         pack();
@@ -278,46 +278,77 @@ public class PortasConfigView extends javax.swing.JFrame {
 
         if (confirm == JOptionPane.YES_OPTION) {
             try {
-                controller.redefinirPadrao();
+                derrubarContainersAtivos();
+                controller.redefinirPortas();
+                
                 JOptionPane.showMessageDialog(this, "Configurações redefinidas para o padrão.",
-                        "Aviso", JOptionPane.WARNING_MESSAGE);
-
+                "Aviso", JOptionPane.WARNING_MESSAGE);
+                
                 preencherInputPortas();
+                System.exit(0);
 
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(this, "Erro ao redefinir: " + e.getMessage(),
-                        "Erro", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Erro ao redefinir: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_btnRedefinirActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        try {
-            Map<String, String> variaveis = new LinkedHashMap<>();
-            variaveis.put("PHP_PORT", inputPHP.getText());
-            variaveis.put("POSTGRES_PORT", inputPostgres.getText());
-            variaveis.put("PGADMIN_PORT", inputPgAdmin.getText());
-            variaveis.put("MYSQL_PORT", inputMySQL.getText());
-            variaveis.put("PMA_PORT", inputPhpMyAdmin.getText());
+        int confirm = JOptionPane.showConfirmDialog(this,
+                "Tem certeza que salvar as configurações?\n"
+                + "Todos os containers ativos serão PARADOS e a aplicação será reiniciada.",
+                "Confirmação", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
 
-            controller.salvar(variaveis);
+        if (confirm == JOptionPane.YES_OPTION) {
+            try {
+                Map<String, String> variaveis = new LinkedHashMap<>();
+                variaveis.put("PHP_PORT", inputPHP.getText());
+                variaveis.put("POSTGRES_PORT", inputPostgres.getText());
+                variaveis.put("PGADMIN_PORT", inputPgAdmin.getText());
+                variaveis.put("MYSQL_PORT", inputMySQL.getText());
+                variaveis.put("PMA_PORT", inputPhpMyAdmin.getText());
 
-            JOptionPane.showMessageDialog(this, "Configurações salvas com sucesso!",
-                    "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+                derrubarContainersAtivos();
 
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Erro ao salvar configurações: " + e.getMessage(),
-                    "Erro", JOptionPane.ERROR_MESSAGE);
-            logger.severe(() -> "Erro ao salvar .env: " + e.getMessage());
+                controller.salvar(variaveis);
+
+                JOptionPane.showMessageDialog(this, "Configurações salvas com sucesso!",
+                "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+                
+                System.exit(0);
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Erro ao salvar configurações: " + e.getMessage(),
+                        "Erro", JOptionPane.ERROR_MESSAGE);
+                logger.severe(() -> "Erro ao salvar .env: " + e.getMessage());
+            }
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     public void preencherInputPortas() {
         inputPHP.setText(controller.getEnv("PHP_PORT", "80"));
         inputPostgres.setText(controller.getEnv("POSTGRES_PORT", "5432"));
-        inputPgAdmin.setText(controller.getEnv("PGADMIN_PORT", "8081"));
+        inputPgAdmin.setText(controller.getEnv("PGADMIN_PORT", "8080"));
         inputMySQL.setText(controller.getEnv("MYSQL_PORT", "3306"));
-        inputPhpMyAdmin.setText(controller.getEnv("PMA_PORT", "8001"));
+        inputPhpMyAdmin.setText(controller.getEnv("PMA_PORT", "8081"));
+    }
+
+    private void derrubarContainersAtivos() {
+        if (controller.isRunning(controller.getEnv("PHP_CONTAINER_NAME", "birazn-ifsp-php"))) {
+            controller.parar(this.dockerComposeFilePath, "php");
+        }
+        if (controller.isRunning(controller.getEnv("MYSQL_CONTAINER_NAME", "birazn-ifsp-mysql"))) {
+            controller.parar(this.dockerComposeFilePath, "mysql");
+        }
+        if (controller.isRunning(controller.getEnv("POSTGRES_CONTAINER_NAME", "birazn-ifsp-pgsql"))) {
+            controller.parar(this.dockerComposeFilePath, "postgres");
+        }
+        if (controller.isRunning(controller.getEnv("PMA_CONTAINER_NAME", "birazn-ifsp-phpmyadmin"))) {
+            controller.parar(this.dockerComposeFilePath, "phpmyadmin");
+        }
+        if (controller.isRunning(controller.getEnv("PGADMIN_CONTAINER_NAME", "birazn-ifsp-pgadmin"))) {
+            controller.parar(this.dockerComposeFilePath, "pgadmin");
+        }
     }
 
     /**

@@ -74,15 +74,27 @@ public class EnvConfig {
             .load();
     }
 
-    public static void redefinirPadrao() throws IOException {
+    public static void redefinirPortas() throws IOException {
         Map<String, String> defaults = new LinkedHashMap<>();
         defaults.put("PHP_PORT", "80");
         defaults.put("POSTGRES_PORT", "5432");
         defaults.put("PGADMIN_PORT", "8081");
         defaults.put("MYSQL_PORT", "3306");
-        defaults.put("PMA_PORT", "8001");
+        defaults.put("PMA_PORT", "8080");
 
         salvar(defaults);
     }
+    
+    public static void redefinirVolumes() throws IOException {
+    Map<String, String> defaults = new LinkedHashMap<>();
+
+    // Volumes padrões
+    defaults.put("PHP_VOLUME", "./web:/var/www/html");
+    defaults.put("POSTGRES_VOLUME", "./postgres:/var/lib/postgresql/data");
+    defaults.put("MYSQL_VOLUME", "./mysql:/var/lib/mysql");
+
+    salvar(defaults);
+}
+
 
 }

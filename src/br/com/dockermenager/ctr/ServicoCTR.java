@@ -37,8 +37,12 @@ public class ServicoCTR {
         EnvConfig.init(dockerComposePath);
     }
 
-    public void redefinirPadrao() throws IOException {
-        EnvConfig.redefinirPadrao();
+    public void redefinirPortas() throws IOException {
+        EnvConfig.redefinirPortas();
+    }
+    
+    public void redefinirVolumes() throws IOException {
+        EnvConfig.redefinirVolumes();
     }
 
     public void salvar(Map<String, String> variaveis) throws IOException {
