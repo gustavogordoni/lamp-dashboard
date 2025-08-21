@@ -44,6 +44,10 @@ public class ServicoCTR {
     public void redefinirVolumes() throws IOException {
         EnvConfig.redefinirVolumes();
     }
+    
+    public void redefinirCredenciais() throws IOException {
+        EnvConfig.redefinirCredenciais();
+    }
 
     public void salvar(Map<String, String> variaveis) throws IOException {
         EnvConfig.salvar(variaveis);

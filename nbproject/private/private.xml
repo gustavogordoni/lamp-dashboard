@@ -5,8 +5,8 @@
         <group>
             <file>file:/home/gustavo/dev/lamp-dashboard/src/br/com/dockermenager/view/PainelPrincipal.java</file>
             <file>file:/home/gustavo/dev/lamp-dashboard/src/br/com/dockermenager/view/PortasConfigView.java</file>
+            <file>file:/home/gustavo/dev/lamp-dashboard/src/br/com/dockermenager/view/CredenciaisConfigView.java</file>
             <file>file:/home/gustavo/dev/lamp-dashboard/src/br/com/dockermenager/view/VolumesConfigView.java</file>
-            <file>file:/home/gustavo/dev/lamp-dashboard/src/br/com/dockermenager/view/CredenciaisView.java</file>
         </group>
     </open-files>
 </project-private>

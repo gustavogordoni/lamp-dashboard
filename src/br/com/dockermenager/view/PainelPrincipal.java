@@ -576,10 +576,10 @@ public final class PainelPrincipal extends javax.swing.JFrame {
         });
         menu.add(volumesItem);
 
-        // Opção "Containers"
-        JMenuItem containersItem = new JMenuItem("Gerenciar Containers");
+        // Opção "Credenciais"
+        JMenuItem containersItem = new JMenuItem("Gerenciar Credenciais");
         containersItem.addActionListener(e -> {
-//            new ContainersConfigView().setVisible(true);
+            new CredenciaisConfigView(dockerComposeFilePath).setVisible(true);
         });
         menu.add(containersItem);
 

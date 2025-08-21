@@ -15,10 +15,17 @@ Com ele, você pode:
 <summary>Screenshots</summary>
 <br />
     <h3 align="center">Painel de Containers</h3>
-    <div align="center"><img src="painelContainers.png" width="50%" /></div>
+    <div align="center"><img src="painelContainers.png" width="75%" /></div>
     <br />
     <h3 align="center">Config: Portas</h3>
-    <div align="center"><img src="configPortas.png" width="50%" /></div> 
+    <div align="center"><img src="configPortas.png" width="75%" /></div> 
+    <br />
+    <h3 align="center">Config: Volumes</h3>
+    <div align="center"><img src="configVolumes.png" width="75%" /></div> 
+    <br />
+    <h3 align="center">Config: Credenciais</h3>
+    <div align="center"><img src="configCredenciais.png" width="75%" /></div> 
+    <br />
 </details>
 
 ---
