@@ -1,0 +1,2 @@
+- Credencial de senha do Mysql não está alterando;
+- 

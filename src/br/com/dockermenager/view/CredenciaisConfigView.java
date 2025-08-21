@@ -24,6 +24,7 @@ public class CredenciaisConfigView extends javax.swing.JFrame {
 
     /**
      * Creates new form CredenciaisView
+     * @param dockerComposeFilePath
      */
     public CredenciaisConfigView(String dockerComposeFilePath) {
         this.dockerComposeFilePath = dockerComposeFilePath;
@@ -469,7 +470,6 @@ public class CredenciaisConfigView extends javax.swing.JFrame {
             controller.parar(this.dockerComposeFilePath, "phpmyadmin");
         }
     }
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnMySQLPassword;

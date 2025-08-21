@@ -3,10 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="2"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/home/gustavo/dev/lamp-dashboard/src/br/com/dockermenager/ctr/</file>
             <file>file:/home/gustavo/dev/lamp-dashboard/src/br/com/dockermenager/view/PainelPrincipal.java</file>
-            <file>file:/home/gustavo/dev/lamp-dashboard/src/br/com/dockermenager/view/PortasConfigView.java</file>
             <file>file:/home/gustavo/dev/lamp-dashboard/src/br/com/dockermenager/view/CredenciaisConfigView.java</file>
-            <file>file:/home/gustavo/dev/lamp-dashboard/src/br/com/dockermenager/view/VolumesConfigView.java</file>
+            <file>file:/home/gustavo/dev/lamp-dashboard/src/br/com/dockermenager/ctr/ServicoCTR.java</file>
+            <file>file:/home/gustavo/dev/lamp-dashboard/src/br/com/dockermenager/dao/EnvConfig.java</file>
         </group>
     </open-files>
 </project-private>

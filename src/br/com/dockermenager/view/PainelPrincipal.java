@@ -27,6 +27,8 @@ public final class PainelPrincipal extends javax.swing.JFrame {
     public PainelPrincipal() {
         setTitle("Painel de Containers");
         initComponents();
+        
+        setLocationRelativeTo(null);
 
         dockerComposeFilePath = controller.carregarCaminho();
         if (dockerComposeFilePath != null) {
@@ -602,7 +604,7 @@ public final class PainelPrincipal extends javax.swing.JFrame {
         }
     }
 
-    public void atualizarStatusContainers() {
+    private void atualizarStatusContainers() {
         boolean phpRodando = controller.isRunning(controller.getEnv("PHP_CONTAINER_NAME", "birazn-ifsp-php"));
         iniciarPHP.setEnabled(!phpRodando);
         pararPHP.setEnabled(phpRodando);
