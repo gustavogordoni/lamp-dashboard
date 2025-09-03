@@ -103,7 +103,7 @@ public class EnvConfig {
         defaults.put("POSTGRES_USER", "postgres");
         defaults.put("POSTGRES_PASSWORD", "postdba");
         defaults.put("PGADMIN_DEFAULT_EMAIL", "postgres@servidor.com");
-        defaults.put("PGADMIN_DEFAULT_PASSWORD", "posdtba");
+        defaults.put("PGADMIN_DEFAULT_PASSWORD", "postdba");
 
         salvar(defaults);
     }

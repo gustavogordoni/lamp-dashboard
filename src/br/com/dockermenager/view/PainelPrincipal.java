@@ -577,15 +577,19 @@ public final class PainelPrincipal extends javax.swing.JFrame {
             new VolumesConfigView(dockerComposeFilePath).setVisible(true);
         });
         menu.add(volumesItem);
-
-        // Opção "Credenciais"
+        
         JMenuItem containersItem = new JMenuItem("Gerenciar Credenciais");
         containersItem.addActionListener(e -> {
             new CredenciaisConfigView(dockerComposeFilePath).setVisible(true);
         });
         menu.add(containersItem);
+        
+        JMenuItem apacheItem = new JMenuItem("Gerenciar Apache");
+        apacheItem.addActionListener(e -> {
+            new ApacheConfigView(dockerComposeFilePath).setVisible(true);
+        });
+        menu.add(apacheItem);
 
-        // Exibe o menu logo abaixo do botão
         menu.show(btnConfig, 0, btnConfig.getHeight());
     }//GEN-LAST:event_btnConfigActionPerformed
 

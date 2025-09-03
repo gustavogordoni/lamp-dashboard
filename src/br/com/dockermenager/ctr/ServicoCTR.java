@@ -40,11 +40,11 @@ public class ServicoCTR {
     public void redefinirPortas() throws IOException {
         EnvConfig.redefinirPortas();
     }
-    
+
     public void redefinirVolumes() throws IOException {
         EnvConfig.redefinirVolumes();
     }
-    
+
     public void redefinirCredenciais() throws IOException {
         EnvConfig.redefinirCredenciais();
     }
@@ -64,4 +64,12 @@ public class ServicoCTR {
     public boolean isRunning(String containerName) {
         return DockerDAO.statusContainer(containerName);
     }
+
+    public boolean listagemDiretorios(String dockerComposeFilePath) {
+        return DockerDAO.listagemDiretorios(dockerComposeFilePath);
+    }
+    
+    public boolean definirListagemDiretorios(String dockerComposeFilePath, boolean habilitar){
+        return DockerDAO.definirListagemDiretorios(dockerComposeFilePath, habilitar);
+    }        
 }
