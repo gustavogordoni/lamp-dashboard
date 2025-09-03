@@ -1,7 +1,6 @@
 package br.com.dockermenager.view;
 
 import br.com.dockermenager.ctr.ServicoCTR;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 
@@ -110,9 +109,7 @@ public class ApacheConfigView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRedefinirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRedefinirActionPerformed
-        boolean sucesso = controller.definirListagemDiretorios(this.dockerComposeFilePath, false);
-
-        if (sucesso) {
+        if (controller.definirListagemDiretorios(this.dockerComposeFilePath, false)) {
             JOptionPane.showMessageDialog(this,
                     "Listagem de diretórios desabilitada com sucesso!",
                     "Sucesso", JOptionPane.INFORMATION_MESSAGE);
@@ -125,10 +122,9 @@ public class ApacheConfigView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRedefinirActionPerformed
 
     private void cbListagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbListagemActionPerformed
-        boolean habilitar = cbListagem.isSelected();        
-        boolean sucesso = controller.definirListagemDiretorios(this.dockerComposeFilePath, habilitar);
+        boolean habilitar = cbListagem.isSelected();                
 
-        if (sucesso) {
+        if (controller.definirListagemDiretorios(this.dockerComposeFilePath, habilitar)) {
             JOptionPane.showMessageDialog(this,
                     "Listagem de diretórios " + (habilitar ? "habilitada" : "desabilitada") + " com sucesso!",
                     "Sucesso", JOptionPane.INFORMATION_MESSAGE);

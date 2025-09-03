@@ -26,6 +26,9 @@ Com ele, você pode:
     <h3 align="center">Config: Credenciais</h3>
     <div align="center"><img src="configCredenciais.png" width="75%" /></div> 
     <br />
+    <h3 align="center">Config: Apache</h3>
+    <div align="center"><img src="configApache.png" width="75%" /></div>
+    <br />
 </details>
 
 ---
