@@ -2,3 +2,5 @@ dist/*
 /build/
 nbproject/private/private.xml
 docker-compose-path.txt
+nbproject/build-impl.xml
+nbproject/genfiles.properties

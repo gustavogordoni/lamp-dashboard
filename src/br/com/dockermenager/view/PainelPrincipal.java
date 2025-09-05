@@ -8,6 +8,7 @@ import br.com.dockermenager.ctr.ServicoCTR;
 import java.awt.Desktop;
 import java.io.File;
 import java.net.URI;
+import java.util.logging.Level;
 import javax.swing.*;
 
 /**
@@ -408,8 +409,7 @@ public final class PainelPrincipal extends javax.swing.JFrame {
                 controller.verificarAplicarRoot();
                 JOptionPane.showMessageDialog(this, "MySQL iniciado!");
             } catch (InterruptedException ex) {
-                System.getLogger(PainelPrincipal.class.getName())
-                        .log(System.Logger.Level.ERROR, "Erro ao aguardar inicialização do MySQL", ex);
+                logger.log(Level.SEVERE, "Erro ao aguardar inicialização do MySQL", ex);                
             }
         } else {
             JOptionPane.showMessageDialog(this, "Falha ao iniciar MySQL!");
@@ -455,8 +455,7 @@ public final class PainelPrincipal extends javax.swing.JFrame {
                 controller.verificarAplicarRoot();
                 JOptionPane.showMessageDialog(this, "phpMyAdmin iniciado!");
             } catch (InterruptedException ex) {
-                System.getLogger(PainelPrincipal.class.getName())
-                        .log(System.Logger.Level.ERROR, "Erro ao aguardar inicialização do MySQL", ex);
+                logger.log(Level.SEVERE, "Erro ao aguardar inicialização do MySQL", ex);
             }
 
         } else {
@@ -594,9 +593,9 @@ public final class PainelPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnConfigActionPerformed
 
     private String getDockerComposeFile() {
-        if (dockerComposeFilePath == null || dockerComposeFilePath.isBlank()) {
-            return "./docker-compose.yaml";
-        }
+            if (dockerComposeFilePath == null || dockerComposeFilePath.isEmpty()) {
+                return "./docker-compose.yaml";
+            }
         return dockerComposeFilePath;
     }
 
