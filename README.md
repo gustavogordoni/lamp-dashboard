@@ -11,12 +11,11 @@ Com ele, você pode:
 
 ## Principais telas
 
+<div align="center"><img src="painelContainers.png" width="75%" /></div>
+
 <details>
-<summary>Screenshots</summary>
-<br />
-    <h3 align="center">Painel de Containers</h3>
-    <div align="center"><img src="painelContainers.png" width="75%" /></div>
-    <br />
+<summary>Veja mais telas</summary>
+<br />    
     <h3 align="center">Config: Portas</h3>
     <div align="center"><img src="configPortas.png" width="75%" /></div> 
     <br />
