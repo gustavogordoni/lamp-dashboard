@@ -1,5 +1,8 @@
 # LAMP Dashboard - Gerenciador de Containers
 
+[![GitHub last commit](https://img.shields.io/github/last-commit/gustavogordoni/lamp-dashboard?color=purple)](https://github.com/gustavogordoni/lamp-dashboard/commits/)
+[![License](https://img.shields.io/github/license/gustavogordoni/lamp-dashboard)](https://github.com/gustavogordoni/lamp-dashboard/blob/main/LICENSE)
+
 Este projeto é um **dashboard em Java (Swing)** que permite gerenciar facilmente os containers do repositório [lamp-compose](https://github.com/gustavogordoni/lamp-compose).
 
 Com ele, você pode:
