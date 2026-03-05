@@ -89,6 +89,26 @@ java -jar dashboard/lamp-dashboard.jar
 
 ---
 
+## Integração com o menu de aplicativos (Linux)
+
+Opcionalmente, você pode adicionar o dashboard ao menu de aplicativos da sua distribuição.
+
+No diretório `lamp-dashboard`, execute:
+
+```bash
+chmod u+x dotDesktop.sh && ./dotDesktop.sh
+```
+
+Isso criará um atalho em:
+
+```
+~/.local/share/applications/lamp-dashboard.desktop
+```
+
+Após isso, o **LAMP Dashboard** aparecerá no menu de aplicativos do sistema.
+
+---
+
 ## Onde usar
 
 Este dashboard foi criado para:
